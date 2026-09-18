@@ -1,4 +1,4 @@
-# **Plugin Name** Plugin
+# **Discourse Pdf Sanitizer** Plugin
 
 **Plugin Summary**
 

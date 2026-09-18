@@ -3,7 +3,7 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          discourse_pdf_sanitizer: "Discourse Pdf Sanitizer"
   js:
-    discourse_plugin_name:
+    discourse_pdf_sanitizer:
       placeholder: placeholder
