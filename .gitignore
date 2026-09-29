@@ -2,3 +2,13 @@ node_modules
 /gems
 /auto_generated
 .eslintcache
+
+.venv/
+__pycache__/
+*.pyc
+
+sanitized.pdf
+acrojs-test.pdf
+acrojs-sanitized.pdf
+fake.pdf
+fake-output.pdf
