@@ -1,1 +1,8 @@
 en:
+  site_settings:
+    discourse_pdf_sanitizer_enabled: "Sanitize PDF uploads before storing them. Requires the plugin Python environment; run script/verify before enabling."
+    discourse_pdf_sanitizer_timeout_seconds: "Maximum number of seconds allowed to sanitize one PDF."
+  discourse_pdf_sanitizer:
+    errors:
+      sanitization_failed: "The PDF could not be made safe and was rejected."
+      direct_upload_too_large: "PDFs of this size cannot be sanitized. Reduce the file size and try again."

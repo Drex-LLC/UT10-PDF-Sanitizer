@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+plugin_dir="$(cd "$(dirname "$0")/.." && pwd)"
+python_bin="${DISCOURSE_PDF_SANITIZER_PYTHON:-$plugin_dir/.venv/bin/python3}"
+
+if [[ ! -x "$python_bin" ]]; then
+  echo "Python environment not found at $python_bin" >&2
+  echo "Create it with: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt" >&2
+  exit 1
+fi
+
+"$python_bin" -I -c 'import pikepdf; assert tuple(map(int, pikepdf.__version__.split(".")[:2])) >= (10, 15); print(f"pikepdf {pikepdf.__version__}")'
+"$python_bin" -m unittest discover -s "$plugin_dir/test/python" -p 'test_*.py' -v

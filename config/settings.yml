@@ -1,4 +1,7 @@
 discourse_pdf_sanitizer:
   discourse_pdf_sanitizer_enabled:
     default: false
-    client: true
+  discourse_pdf_sanitizer_timeout_seconds:
+    default: 30
+    min: 5
+    max: 120

@@ -7,8 +7,6 @@ node_modules
 __pycache__/
 *.pyc
 
-sanitized.pdf
-acrojs-test.pdf
-acrojs-sanitized.pdf
-fake.pdf
-fake-output.pdf
+spec/fixtures/pdf_corpus/accepted/*.pdf
+spec/fixtures/pdf_corpus/rejected/*.pdf
+spec/fixtures/pdf_corpus/output/

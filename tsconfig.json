@@ -8,10 +8,10 @@
   ],
   "compilerOptions": {
     "paths": {
-      "discourse/plugins/discourse-plugin-skeleton/*": [
+      "discourse/plugins/discourse-pdf-sanitizer/*": [
         "./assets/javascripts/*"
       ],
-      "discourse/plugins/discourse-plugin-skeleton/admin/*": [
+      "discourse/plugins/discourse-pdf-sanitizer/admin/*": [
         "./admin/assets/javascripts/admin/*"
       ],
       "admin/*": ["./node_modules/discourse/declarations/admin/*"],

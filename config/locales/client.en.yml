@@ -3,7 +3,4 @@ en:
     admin:
       site_settings:
         categories:
-          discourse_pdf_sanitizer: "Discourse Pdf Sanitizer"
-  js:
-    discourse_pdf_sanitizer:
-      placeholder: placeholder
+          discourse_pdf_sanitizer: "PDF sanitizer"
