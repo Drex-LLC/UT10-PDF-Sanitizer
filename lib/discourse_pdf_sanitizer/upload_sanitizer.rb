@@ -36,8 +36,8 @@ module DiscoursePdfSanitizer
             timeout_seconds: SiteSetting.discourse_pdf_sanitizer_timeout_seconds,
             max_output_bytes: SiteSetting.max_attachment_size_kb.kilobytes,
           )
-          validate_output!(output)
-          replace_input!(file, output)
+          validate_output!(output.path)
+          replace_input!(file, output.path)
         end
 
         file
@@ -55,20 +55,17 @@ module DiscoursePdfSanitizer
         end
       end
 
-      def validate_output!(output)
-        output.flush
-        raise SanitizationError, "sanitizer produced an empty file" unless File.size?(output.path)
+      def validate_output!(output_path)
+        raise SanitizationError, "sanitizer produced an empty file" unless File.size?(output_path)
 
-        output.rewind
-        header = output.read(PDF_HEADER_BYTES).to_s
+        header = File.binread(output_path, PDF_HEADER_BYTES)
         raise SanitizationError, "sanitizer produced a non-PDF file" if header.exclude?("%PDF-")
       end
 
-      def replace_input!(file, output)
-        output.rewind
+      def replace_input!(file, output_path)
         file.rewind
         file.truncate(0)
-        IO.copy_stream(output, file)
+        File.open(output_path, "rb") { |output| IO.copy_stream(output, file) }
         file.flush
         file.fsync
         file.rewind

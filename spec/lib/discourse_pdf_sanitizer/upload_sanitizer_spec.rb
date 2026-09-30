@@ -12,7 +12,9 @@ RSpec.describe DiscoursePdfSanitizer::UploadSanitizer do
       runner =
         Object.new.tap do |object|
           object.define_singleton_method(:run) do |input_path:, output_path:, **_options|
-            File.binwrite(output_path, File.binread(input_path).sub("original", "sanitized"))
+            replacement_path = "#{output_path}.replacement"
+            File.binwrite(replacement_path, File.binread(input_path).sub("original", "sanitized"))
+            File.rename(replacement_path, output_path)
           end
         end
 

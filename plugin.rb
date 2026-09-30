@@ -2,7 +2,7 @@
 
 # name: discourse-pdf-sanitizer
 # about: Sanitizes PDF attachments before Discourse stores them
-# version: 0.1.0
+# version: 0.1.1
 # authors: L360
 # url: https://github.com/diederichL360C/UT10-Upload-Sanitizer
 # required_version: 2.7.0
