@@ -12,3 +12,7 @@ fi
 
 "$python_bin" -I -c 'import pikepdf; assert tuple(map(int, pikepdf.__version__.split(".")[:2])) >= (10, 15); print(f"pikepdf {pikepdf.__version__}")'
 "$python_bin" -m unittest discover -s "$plugin_dir/test/python" -p 'test_*.py' -v
+"$python_bin" "$plugin_dir/script/sanitize_corpus.py" \
+  --allow-empty \
+  "$plugin_dir/spec/fixtures/pdf_corpus/accepted/before" \
+  "$plugin_dir/spec/fixtures/pdf_corpus/accepted/after"

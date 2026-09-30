@@ -101,19 +101,15 @@ class SanitizePdfTest(unittest.TestCase):
 
 
 class PrivateCorpusTest(unittest.TestCase):
-    def test_private_corpus(self):
+    def test_rejected_private_corpus(self):
         corpus_root = PLUGIN_ROOT / "spec" / "fixtures" / "pdf_corpus"
-        accepted = sorted((corpus_root / "accepted").glob("*.pdf"))
-        rejected = sorted((corpus_root / "rejected").glob("*.pdf"))
+        rejected = sorted(
+            path
+            for path in (corpus_root / "rejected").rglob("*")
+            if path.is_file() and path.suffix.lower() == ".pdf"
+        )
 
         with tempfile.TemporaryDirectory() as output_directory:
-            for input_path in accepted:
-                with self.subTest(expected="accepted", pdf=input_path.name):
-                    output_path = Path(output_directory) / input_path.name
-                    SANITIZE_MODULE.sanitize_pdf(input_path, output_path)
-                    with pikepdf.open(output_path, attempt_recovery=False) as pdf:
-                        self.assertGreaterEqual(len(pdf.pages), 1)
-
             for input_path in rejected:
                 with self.subTest(expected="rejected", pdf=input_path.name):
                     output_path = Path(output_directory) / input_path.name

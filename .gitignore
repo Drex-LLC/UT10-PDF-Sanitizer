@@ -7,6 +7,6 @@ node_modules
 __pycache__/
 *.pyc
 
-spec/fixtures/pdf_corpus/accepted/*.pdf
-spec/fixtures/pdf_corpus/rejected/*.pdf
-spec/fixtures/pdf_corpus/output/
+spec/fixtures/pdf_corpus/**/*.pdf
+spec/fixtures/pdf_corpus/accepted/after/*
+!spec/fixtures/pdf_corpus/accepted/after/.gitkeep

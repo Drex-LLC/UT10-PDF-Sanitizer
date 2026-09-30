@@ -57,14 +57,14 @@ Run the Discourse-side specs from the Discourse root:
 bin/rspec plugins/discourse-pdf-sanitizer/spec
 ```
 
-To test real PDFs, place files expected to succeed in `spec/fixtures/pdf_corpus/accepted/` and files expected to be rejected in `spec/fixtures/pdf_corpus/rejected/`. PDFs in those directories are intentionally gitignored so private samples are not committed accidentally. Then run `script/verify` again.
+To test real PDFs, place files expected to succeed in `spec/fixtures/pdf_corpus/accepted/before/` and files expected to be rejected in `spec/fixtures/pdf_corpus/rejected/`. PDFs in those directories are intentionally gitignored so private samples are not committed accidentally. Then run `script/verify` again. Sanitized copies overwrite the matching paths in `accepted/after/`, and `accepted/after/sanitization-report.json` records their before/after hashes, sizes, page counts, and sanitization policy.
 
 To retain sanitized copies for visual comparison:
 
 ```sh
 .venv/bin/python script/sanitize_corpus.py \
-  spec/fixtures/pdf_corpus/accepted \
-  spec/fixtures/pdf_corpus/output
+  spec/fixtures/pdf_corpus/accepted/before \
+  spec/fixtures/pdf_corpus/accepted/after
 ```
 
 Compare the originals and outputs visually, verify text search and form behavior that your community relies on, and scan the outputs with the malware scanner used by your hosting provider.
